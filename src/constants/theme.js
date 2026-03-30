@@ -32,9 +32,9 @@ export const productsWithLabel = products.map((p, i) => ({ ...p, label:`Product 
 
 // ─── Collections ────────────────────────────────────────────
 export const collections = [
-  { tag:"Signature",   name:"Evening Couture", pieces:24, label:"Collection Image 1" },
-  { tag:"Summer 2025", name:"Resort Wear",      pieces:18, label:"Collection Image 2" },
-  { tag:"Exclusive",   name:"Tailored Suiting", pieces:32, label:"Collection Image 3" },
+  { tag:"Signature",   name:"Evening Couture", pieces:24, label:"Collection Image 1", image:"/images/vadim-yefremov-mKm53OdZfCI-unsplash.jpg" },
+  { tag:"Summer 2025", name:"Resort Wear",      pieces:18, label:"Collection Image 2", image:"/images/rodrigo-rodrigues-wolf-r-t-zhQ9ws8uwzg-unsplash.jpg" },
+  { tag:"Exclusive",   name:"Tailored Suiting", pieces:32, label:"Collection Image 3", image:"/images/khalid-boutchich-KSazmALqLVg-unsplash.jpg" },
 ];
 
 // ─── Designers ──────────────────────────────────────────────
