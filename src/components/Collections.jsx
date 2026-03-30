@@ -29,7 +29,7 @@ export default function Collections({ onNav }) {
         {collections.map((c, i) => (
           <div key={i} className="col-card" onClick={() => onNav("featured")}
             style={{ position:"relative", overflow:"hidden", cursor:"pointer" }}>
-            <Placeholder label={c.label} dark />
+            <img src={c.image} alt={c.name} style={{ width:"100%", height:"100%", objectFit:"cover" }} />
             <div style={{ position:"absolute", inset:0,
               background:"linear-gradient(to top,rgba(13,11,9,0.88) 0%,rgba(13,11,9,0.1) 55%)" }}/>
             <div style={{ position:"absolute", bottom:0, left:0, right:0, padding:32 }}>
