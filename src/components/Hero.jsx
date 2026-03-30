@@ -61,7 +61,11 @@ export default function Hero({ onNav }) {
 
       {/* Right – hero image */}
       <div style={{ position:"relative", overflow:"hidden" }}>
-        <Placeholder label="Hero Image" dark />
+        <img
+  src="/images/roman-manshin-5a7sg7hZnW0-unsplash.jpg"
+  alt="hero-image"
+  style={{ width:"100%", height:"100%", objectFit:"cover", objectPosition:"center" }}
+/>
         <div style={{ position:"absolute", inset:0, background:"linear-gradient(to right,rgba(13,11,9,0.25),transparent 40%)", pointerEvents:"none" }}/>
         <div style={{ position:"absolute", bottom:36, left:"50%", transform:"translateX(-50%)",
           display:"flex", flexDirection:"column", alignItems:"center", gap:8 }}>
