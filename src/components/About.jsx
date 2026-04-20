@@ -6,7 +6,7 @@ export default function About({ onNav }) {
     <div id="about" style={{ display:"grid", gridTemplateColumns:"1fr 1fr" }}>
       {/* Image side */}
       <div style={{ position:"relative", overflow:"hidden", minHeight:600 }}>
-        <Placeholder label="About / Atelier Image" dark />
+        <img src="/images/truong-tuyet-ly-TUdt7FdMeiU-unsplash.jpg" alt="Lumière Atelier" style={{ width:"100%", height:"100%", objectFit:"cover", objectPosition:"center" }} />
         <div style={{ position:"absolute", bottom:44, right:-18, width:164, height:164,
           border:"1px solid rgba(184,151,62,0.3)", display:"flex", flexDirection:"column",
           alignItems:"center", justifyContent:"center",
