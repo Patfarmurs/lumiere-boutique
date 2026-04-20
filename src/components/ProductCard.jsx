@@ -8,7 +8,7 @@ export default function ProductCard({ p, wishlist, added, onWishlist, onAdd }) {
         onMouseEnter={e => e.currentTarget.querySelector(".pact").style.transform = "translateY(0)"}
         onMouseLeave={e => e.currentTarget.querySelector(".pact").style.transform = "translateY(100%)"}
       >
-        <Placeholder label={p.label} />
+        <img src={p.image} alt={p.name} style={{ width:"100%", height:"100%", objectFit:"cover", objectPosition:"top" }} />
 
         {p.badge && (
           <span style={{ position:"absolute", top:13, left:13, padding:"4px 12px",

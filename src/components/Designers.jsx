@@ -26,7 +26,7 @@ export default function Designers({ onNav }) {
             onMouseLeave={e => e.currentTarget.style.transform = "translateY(0)"}
           >
             <div style={{ aspectRatio:"4/5", marginBottom:20, overflow:"hidden" }}>
-              <Placeholder label={d.label} />
+               <img src={d.image} alt={d.name} style={{ width:"100%", height:"100%", objectFit:"cover", objectPosition:"top" }} />
             </div>
             <div style={{ fontSize:"0.57rem", letterSpacing:"0.22em", textTransform:"uppercase", color:GOLD, marginBottom:5 }}>{d.origin} · Since {d.since}</div>
             <div style={{ fontFamily:"'Cormorant Garamond',serif", fontSize:"1.25rem", fontWeight:400, marginBottom:6 }}>{d.name}</div>
