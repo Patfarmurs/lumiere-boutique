@@ -2,26 +2,25 @@ import { useState } from "react";
 import { GOLD, OBSIDIAN, IVORY, WARM_GRAY } from "../../constants/theme";
 
 export default function AccountModal({ onClose }) {
-  const [tab,     setTab]     = useState("signin");
-  const [name,    setName]    = useState("");
-  const [email,   setEmail]   = useState("");
-  const [pass,    setPass]    = useState("");
-  const [msg,     setMsg]     = useState("");
+  const [tab,   setTab]   = useState("signin");
+  const [name,  setName]  = useState("");
+  const [email, setEmail] = useState("");
+  const [pass,  setPass]  = useState("");
+  const [msg,   setMsg]   = useState("");
 
-  const inputStyle = { width:"100%", padding:"13px 16px", border:`1px solid rgba(0,0,0,0.15)`,
+  const inputStyle = {
+    width:"100%", padding:"13px 16px", border:"1px solid rgba(0,0,0,0.15)",
     background:"transparent", fontFamily:"'Jost',sans-serif", fontSize:"0.86rem",
-    outline:"none", color:OBSIDIAN, transition:"border-color 0.3s" };
-
-  const labelStyle = { fontSize:"0.62rem", letterSpacing:"0.18em", textTransform:"uppercase",
-    color:WARM_GRAY, display:"block", marginBottom:8 };
+    outline:"none", color:OBSIDIAN, transition:"border-color 0.3s",
+  };
+  const labelStyle = {
+    fontSize:"0.62rem", letterSpacing:"0.18em", textTransform:"uppercase",
+    color:WARM_GRAY, display:"block", marginBottom:8,
+  };
 
   const handleSubmit = () => {
-    if (!email.includes("@") || pass.length < 4) {
-      setMsg("Please enter a valid email and password (min. 4 chars)."); return;
-    }
-    if (tab === "register" && !name.trim()) {
-      setMsg("Please enter your full name."); return;
-    }
+    if (!email.includes("@") || pass.length < 4) { setMsg("Please enter a valid email and password (min. 4 chars)."); return; }
+    if (tab === "register" && !name.trim())        { setMsg("Please enter your full name."); return; }
     setMsg(tab === "signin" ? "✦ Welcome back to Lumière" : "✦ Your account has been created");
     setTimeout(() => { onClose(); setMsg(""); setEmail(""); setPass(""); setName(""); }, 1800);
   };
@@ -29,18 +28,9 @@ export default function AccountModal({ onClose }) {
   const switchTab = (t) => { setTab(t); setMsg(""); };
 
   return (
-    <div onClick={() => { onClose(); setMsg(""); }} style={{ position:"fixed", inset:0, zIndex:2000,
-      background:"rgba(13,11,9,0.88)", backdropFilter:"blur(8px)",
-      display:"flex", alignItems:"center", justifyContent:"center" }}>
-      <div onClick={e => e.stopPropagation()} style={{
-        background:IVORY, width:"100%", maxWidth:420, padding:"48px 48px 40px", position:"relative" }}>
-
-        <button onClick={() => { onClose(); setMsg(""); }} style={{
-          position:"absolute", top:20, right:20, background:"none", border:"none",
-          cursor:"pointer", color:WARM_GRAY, fontSize:"1rem", transition:"transform 0.3s" }}
-          onMouseEnter={e => e.currentTarget.style.transform="rotate(90deg)"}
-          onMouseLeave={e => e.currentTarget.style.transform="rotate(0deg)"}
-        >✕</button>
+    <div onClick={() => { onClose(); setMsg(""); }} className="modal-overlay">
+      <div onClick={e => e.stopPropagation()} className="modal-box" style={{ maxWidth:420 }}>
+        <button onClick={() => { onClose(); setMsg(""); }} className="modal-close" style={{ color:WARM_GRAY }}>✕</button>
 
         <div style={{ fontSize:"0.6rem", letterSpacing:"0.3em", textTransform:"uppercase",
           color:GOLD, marginBottom:8, display:"flex", alignItems:"center", gap:10 }}>
@@ -50,13 +40,13 @@ export default function AccountModal({ onClose }) {
         {/* Tabs */}
         <div style={{ display:"flex", borderBottom:`1px solid rgba(184,151,62,0.2)`, marginBottom:28 }}>
           {[["signin","Sign In"],["register","Create Account"]].map(([t, lbl]) => (
-            <button key={t} onClick={() => switchTab(t)}
-              style={{ flex:1, padding:"12px 0", background:"none", border:"none", cursor:"pointer",
-                fontFamily:"'Jost',sans-serif", fontSize:"0.67rem",
-                fontWeight: tab===t ? 500 : 300, letterSpacing:"0.16em", textTransform:"uppercase",
-                color: tab===t ? OBSIDIAN : WARM_GRAY,
-                borderBottom: tab===t ? `2px solid ${GOLD}` : "2px solid transparent",
-                marginBottom:-1, transition:"all 0.25s" }}
+            <button key={t} onClick={() => switchTab(t)} style={{
+              flex:1, padding:"12px 0", background:"none", border:"none", cursor:"pointer",
+              fontFamily:"'Jost',sans-serif", fontSize:"0.67rem",
+              fontWeight: tab===t ? 500 : 300, letterSpacing:"0.16em", textTransform:"uppercase",
+              color: tab===t ? OBSIDIAN : WARM_GRAY,
+              borderBottom: tab===t ? `2px solid ${GOLD}` : "2px solid transparent",
+              marginBottom:-1, transition:"all 0.25s" }}
             >{lbl}</button>
           ))}
         </div>
@@ -69,7 +59,7 @@ export default function AccountModal({ onClose }) {
               <input type="email" value={email} onChange={e => setEmail(e.target.value)}
                 placeholder="your@email.com" style={inputStyle}
                 onFocus={e => e.target.style.borderColor=GOLD}
-                onBlur={e => e.target.style.borderColor="rgba(0,0,0,0.15)"}/>
+                onBlur={e  => e.target.style.borderColor="rgba(0,0,0,0.15)"}/>
             </div>
             <div style={{ marginBottom:24 }}>
               <label style={labelStyle}>Password</label>
@@ -77,7 +67,7 @@ export default function AccountModal({ onClose }) {
                 placeholder="••••••••" onKeyDown={e => e.key==="Enter" && handleSubmit()}
                 style={inputStyle}
                 onFocus={e => e.target.style.borderColor=GOLD}
-                onBlur={e => e.target.style.borderColor="rgba(0,0,0,0.15)"}/>
+                onBlur={e  => e.target.style.borderColor="rgba(0,0,0,0.15)"}/>
             </div>
             {msg && <p style={{ fontSize:"0.78rem", color: msg.startsWith("✦") ? GOLD : "#c0392b",
               marginBottom:14, fontStyle:"italic", fontFamily:"'Cormorant Garamond',serif" }}>{msg}</p>}
@@ -97,7 +87,7 @@ export default function AccountModal({ onClose }) {
           </>
         )}
 
-        {/* Create Account */}
+        {/* Register */}
         {tab === "register" && (
           <>
             <div style={{ marginBottom:16 }}>
@@ -105,14 +95,14 @@ export default function AccountModal({ onClose }) {
               <input type="text" value={name} onChange={e => setName(e.target.value)}
                 placeholder="Jane Doe" style={inputStyle}
                 onFocus={e => e.target.style.borderColor=GOLD}
-                onBlur={e => e.target.style.borderColor="rgba(0,0,0,0.15)"}/>
+                onBlur={e  => e.target.style.borderColor="rgba(0,0,0,0.15)"}/>
             </div>
             <div style={{ marginBottom:16 }}>
               <label style={labelStyle}>Email</label>
               <input type="email" value={email} onChange={e => setEmail(e.target.value)}
                 placeholder="your@email.com" style={inputStyle}
                 onFocus={e => e.target.style.borderColor=GOLD}
-                onBlur={e => e.target.style.borderColor="rgba(0,0,0,0.15)"}/>
+                onBlur={e  => e.target.style.borderColor="rgba(0,0,0,0.15)"}/>
             </div>
             <div style={{ marginBottom:24 }}>
               <label style={labelStyle}>Password</label>
@@ -120,7 +110,7 @@ export default function AccountModal({ onClose }) {
                 placeholder="Min. 4 characters" onKeyDown={e => e.key==="Enter" && handleSubmit()}
                 style={inputStyle}
                 onFocus={e => e.target.style.borderColor=GOLD}
-                onBlur={e => e.target.style.borderColor="rgba(0,0,0,0.15)"}/>
+                onBlur={e  => e.target.style.borderColor="rgba(0,0,0,0.15)"}/>
             </div>
             {msg && <p style={{ fontSize:"0.78rem", color: msg.startsWith("✦") ? GOLD : "#c0392b",
               marginBottom:14, fontStyle:"italic", fontFamily:"'Cormorant Garamond',serif" }}>{msg}</p>}
