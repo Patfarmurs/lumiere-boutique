@@ -1,4 +1,4 @@
-import { GOLD, OBSIDIAN } from "../constants/theme";
+import { OBSIDIAN } from "../constants/theme";
 
 const MESSAGES = [
   "Free shipping on orders over R5,000",
@@ -10,7 +10,7 @@ const MESSAGES = [
 
 export default function Ticker() {
   return (
-    <div style={{ background:GOLD, padding:"11px 0", overflow:"hidden" }}>
+    <div className="ticker-root">
       <div className="tk">
         {[...Array(2)].flatMap(() => MESSAGES).map((t, i) => (
           <span key={i} style={{ fontSize:"0.62rem", fontWeight:500, letterSpacing:"0.22em",
