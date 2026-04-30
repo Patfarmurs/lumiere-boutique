@@ -8,7 +8,7 @@ A fully responsive luxury fashion e-commerce single-page application built with 
 
 ## Live Preview
 
-![Lumière Boutique](https://lumiereboutique.netlify.app/)
+![Lumière Boutique](public/images/Lumiereboutique-pic.png)
 
 ---
 
