@@ -8,7 +8,7 @@ A fully responsive luxury fashion e-commerce single-page application built with 
 
 ## Live Preview
 
-![Lumière Boutique](https://via.placeholder.com/1200x600/0D0B09/B8973E?text=Lumière+Boutique)
+![Lumière Boutique](https://lumiereboutique.netlify.app/)
 
 ---
 
@@ -118,7 +118,7 @@ src/
 
 **1. Clone the repository**
 ```bash
-git clone https://github.com/YOUR_USERNAME/lumiere-boutique.git
+git clone https://github.com/patfarmurs/lumiere-boutique.git
 cd lumiere-boutique
 ```
 
